@@ -1,5 +1,5 @@
-#ifndef _COLLECTIONS_ITERATOR_
-#define _COLLECTIONS_ITERATOR_
+#ifndef _COLLECTIONS_ITERATOR_H
+#define _COLLECTIONS_ITERATOR_H
 
 #include <stdexcept>
 
@@ -8,7 +8,9 @@ class Iterator
 {
 public:
     virtual ~Iterator() = default;
+
     virtual bool hasNext() = 0;
+
     virtual E next() = 0;
 };
 
@@ -20,7 +22,7 @@ public:
 
     virtual Iterator<E> *iterator() = 0;
 
-    void forEach(void f(E))
+    virtual void forEach(void f(E))
     {
         Iterator<E> *it = iterator();
         while (it->hasNext())
